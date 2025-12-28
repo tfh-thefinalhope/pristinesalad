@@ -1,0 +1,309 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "topTag": "100% Vegetarian Cloud Kitchen",
+        "title": "FRESH. <span class=\"text-brand-green\">CRUNCHY.</span> <br /> HEALTHY.",
+        "subtitle": "Nourishing your body with <br class=\"hidden lg:block\" /> nature's finest ingredients.",
+        "image": "https://saladocafe.com/wp-content/uploads/2025/08/pannerr.webp"
+      },
+      {
+        "topTag": "Protein Packed Bowls",
+        "title": "POWER. <span class=\"text-brand-green\">ENERGY.</span> <br /> VITALITY.",
+        "subtitle": "Fuel your day with our <br class=\"hidden lg:block\" /> high-protein superfood bowls.",
+        "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop"
+      },
+      {
+        "topTag": "Exotic Green Salads",
+        "title": "PURE. <span class=\"text-brand-green\">ORGANIC.</span> <br /> DELICIOUS.",
+        "subtitle": "Experience the taste of <br class=\"hidden lg:block\" /> farm-fresh exotic greens.",
+        "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1000&auto=format&fit=crop"
+      }
+    ],
+    "cta_primary": "ORDER NOW",
+    "cta_secondary": "VIEW MENU"
+  },
+  "story": {
+    "title": "From a Home Kitchen to a Premium Cloud Kitchen",
+    "content": [
+      "At Pristine Salads, we believe healthy eating should be a delightful experience. What began as a small idea has grown into a premium cloud kitchen dedicated to wellness.",
+      "We provide nutrition-full and healthy foods, ensuring every meal is a perfect balance of taste and vitality. Our mission is to nourish your body with wholesome ingredients."
+    ],
+    "images": [
+      "/kitchen.jpg",
+      "/founder.jpg",
+      "/kids.jpg"
+    ]
+  },
+  "menu": {
+    "title": "Menu Highlights",
+    "items": [
+      {
+        "name": "Bean Sprouts (Special Salad)",
+        "description": "A healthy mix of sprouts, veggies & lemon for a refreshing crunch.",
+        "image": "/images/menu-item-1.png",
+        "category": "Signature Salads"
+      },
+      {
+        "name": "Sprout Bowl",
+        "price": "249",
+        "description": "Nutrient-rich sprouts mixed with pomegranate, cucumber, and lime dressing.",
+        "image": "/images/menu-item-2.png",
+        "category": "Protein Packed"
+      },
+      {
+        "name": "Paneer Mexican Salad",
+        "price": "299",
+        "description": "Grilled paneer cubes with corn, bell peppers, and spicy Mexican dressing.",
+        "image": "/images/menu-item-3.png",
+        "category": "Signature Salads"
+      },
+      {
+        "name": "Exotic Fruit Salad",
+        "price": "349",
+        "description": "Seasonal exotic fruits aimed to refresh and revitalize.",
+        "image": "/images/menu-item-4.png",
+        "category": "Fruit Bowls"
+      },
+      {
+        "name": "Quinoa Power Bowl",
+        "price": "329",
+        "description": "Superfood quinoa with avocado, cherry tomatoes, and lemon vinaigrette.",
+        "image": "/images/menu-item-5.png",
+        "category": "Protein Packed"
+      }
+    ]
+  },
+  "fullMenu": [
+    {
+      "category": "Sprout Bowl's",
+      "items": [
+        {
+          "name": "Fresh Sprout Salad Base",
+          "price": "199",
+          "description": "Steamed sprouts mixed with cucumber, onion, tomato, green chilli & baked potato, garnished with coriander, pomegranate & sesame seeds.",
+          "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680"
+        },
+        {
+          "name": "Moong Sprout Salad",
+          "price": "99",
+          "description": "Light, fresh & high protein.",
+          "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2544"
+        },
+        {
+          "name": "Moth Sprout Salad",
+          "price": "99",
+          "description": "Energy-boosting & fiber-rich.",
+          "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=2670"
+        },
+        {
+          "name": "Black Chana Salad",
+          "price": "99",
+          "description": "High protein & muscle-friendly.",
+          "image": "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?q=80&w=1964"
+        },
+        {
+          "name": "Chickpea Salad",
+          "price": "99",
+          "description": "Filling, healthy & power-packed.",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070"
+        },
+        {
+          "name": "Sweetcorn Salsa",
+          "price": "99",
+          "description": "Fresh, Tangy, Light, Spicy. (Rs.30/- Extra with Avocado)",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070"
+        }
+      ]
+    },
+    {
+      "category": "Rice Bowl's",
+      "items": [
+        {
+          "name": "Rice Bowl Base",
+          "price": "110",
+          "description": "Mix vegetable rice in olive oil, spicy coastal pachadi, peri-peri sauce, fresh herbs & light spices.",
+          "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=2072"
+        },
+        {
+          "name": "Paneer Sauté with Mix Herbs",
+          "price": "149",
+          "description": "Rice base + sautéed paneer tossed in mix herbs.",
+          "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=2670"
+        },
+        {
+          "name": "Chilli Garlic Mushroom",
+          "price": "139",
+          "description": "Rice base + chilli garlic mushroom.",
+          "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2544"
+        },
+        {
+          "name": "Scrambled Egg Rice Bowl",
+          "price": "129",
+          "description": "Rice base + soft scrambled eggs with light seasoning.",
+          "image": "https://images.unsplash.com/photo-1529312266912-b33cf6227e2f?q=80&w=1887"
+        },
+        {
+          "name": "Fajita Veggies Rice Bowl",
+          "price": "139",
+          "description": "Rice base + fajita veggies.",
+          "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680"
+        }
+      ]
+    },
+    {
+      "category": "Super Food Bowl's",
+      "items": [
+        {
+          "name": "Super Food Base",
+          "price": "199",
+          "description": "Red rajma, creamy guacamole, pico de gallo, sweet corn salsa, fajita veggies, creama de yoghurt dressing.",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070"
+        },
+        {
+          "name": "Mix Herb Sauté Paneer",
+          "price": "239",
+          "description": "Super food base + mix herb sautéed paneer. High protein • Rich flavour.",
+          "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680"
+        },
+        {
+          "name": "Spicy Garlic Mushroom",
+          "price": "229",
+          "description": "Super food base + chilli garlic mushroom. Low fat • High fibre.",
+          "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2544"
+        },
+        {
+          "name": "Crispy Falafel",
+          "price": "239",
+          "description": "Super food base + shallow fried falafel. Plant protein • Middle Eastern twist.",
+          "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=2670"
+        }
+      ]
+    },
+    {
+      "category": "Vegetable Salad Bowl's",
+      "items": [
+        {
+          "name": "Vegetable Salad Base",
+          "price": "149",
+          "description": "Broccoli, beans, carrot, Lettuce, onion, Zucchini, capsicum, olive oil, mix herbs.",
+          "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=2584"
+        },
+        {
+          "name": "Steamed Veggies Salad",
+          "price": "119",
+          "description": "Dressing with Honey mustard Sauce.",
+          "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680"
+        },
+        {
+          "name": "Sauté Veggies Salad",
+          "price": "139",
+          "description": "Dressing with yoghurt tahini Sauce.",
+          "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2544"
+        },
+        {
+          "name": "Baked Veggies Salad",
+          "price": "149",
+          "description": "Dressing with yoghurt tahini Sauce.",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070"
+        },
+        {
+          "name": "Greek Style Salad",
+          "price": "129",
+          "description": "Dressing with Dijon mustard Sauce. Fresh • Colourful • Light • Nutritious.",
+          "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1887"
+        }
+      ]
+    },
+    {
+      "category": "Chilla's",
+      "items": [
+        {
+          "name": "Chilla Base",
+          "price": "99",
+          "description": "Besan, onion, tomato, mix herbs, olive oil, spices, served with curd & Chutney.",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070"
+        },
+        {
+          "name": "Paneer Chilla",
+          "price": "129",
+          "description": "Chilla base + soft paneer stuffing with herbs.",
+          "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2680"
+        },
+        {
+          "name": "Palak Chilla",
+          "price": "99",
+          "description": "Chilla base + fresh palak blend.",
+          "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2544"
+        },
+        {
+          "name": "Tofu Chilla",
+          "price": "119",
+          "description": "Chilla base + tofu with light seasoning.",
+          "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=2670"
+        }
+      ]
+    },
+    {
+      "category": "Special Items",
+      "items": [
+        {
+          "name": "Paneer Tikka",
+          "price": "159",
+          "description": "Marinated paneer, capsicum, onion, Indian spices, mix herbs. Grilled in Olive Oil.",
+          "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?q=80&w=2517"
+        },
+        {
+          "name": "Crispy Falafel & Creamy Hummus",
+          "price": "159",
+          "description": "Served With Creamy hummus dip & light salad garnish. High Protein.",
+          "image": "https://images.unsplash.com/photo-1593001872095-7d5b425b9675?q=80&w=1887"
+        },
+        {
+          "name": "Creamy Avocado Egg Salad",
+          "price": "149",
+          "description": "Creamy avocado & protein-rich eggs tossed with fresh greens in honey mustard dressing.",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070"
+        },
+        {
+          "name": "Fresh Fruit Fiesta Bowl",
+          "price": "99",
+          "description": "Seasonal fruits mix - naturally sweet & perfect for detox.",
+          "image": "https://images.unsplash.com/photo-1519996529931-28324d1a630e?q=80&w=1887"
+        },
+        {
+          "name": "Sweet Potato Chaat",
+          "price": "99",
+          "description": "Dry roasted sweet potato tossed with desi spices.",
+          "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=2670"
+        }
+      ]
+    }
+  ],
+  "offer": {
+    "show": false,
+    "title": "FLAT 20% OFF",
+    "description": "On your first order! Use code: FRESH20",
+    "code": "FRESH20"
+  },
+  "testimonials": [
+    {
+      "name": "Priya Sharma",
+      "role": "Fitness Enthusiast",
+      "text": "The freshest salads I've ever had! The Sprout Bean mix is my daily go-to for post-workout nutrition.",
+      "rating": 5
+    },
+    {
+      "name": "Rahul Verma",
+      "role": "Software Engineer",
+      "text": "Love the variety. The packaging is eco-friendly and the delivery is always on time. Highly recommended!",
+      "rating": 5
+    },
+    {
+      "name": "Anjali Deshmukh",
+      "role": "Yoga Instructor",
+      "text": "Finally a place that understands 'healthy' doesn't mean boring. The dressings are absolutely delicious.",
+      "rating": 5
+    }
+  ]
+}
