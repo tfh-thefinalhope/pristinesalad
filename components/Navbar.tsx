@@ -2,12 +2,23 @@
 
 import { motion } from "framer-motion";
 import { Menu, ShoppingBag, Leaf } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useLoader } from "@/context/LoaderContext";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
+    const { hideLoader } = useLoader();
+
+    // Clear loader on navigation to static pages (Our Menu handles its own loading)
+    useEffect(() => {
+        if (pathname !== "/our-menu") {
+            // Short delay to ensure transition feels smooth
+            const timer = setTimeout(() => hideLoader(), 500);
+            return () => clearTimeout(timer);
+        }
+    }, [pathname, hideLoader]);
 
     return (
         <motion.nav
@@ -58,7 +69,7 @@ export default function Navbar() {
 
                     {/* CTA & Mobile Toggle */}
                     <div className="flex items-center space-x-4">
-                        <button className="hidden md:flex items-center space-x-2 bg-brand-green hover:bg-brand-darkGreen text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-brand-green/30 transform hover:scale-105">
+                        <button className="hidden md:flex items-center space-x-2 bg-brand-green hover:bg-[#0a2f1c] text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-brand-green/30 transform hover:scale-105 border-2 border-brand-green">
                             <span>Order Now</span>
                             <ShoppingBag className="w-4 h-4" />
                         </button>
@@ -98,7 +109,7 @@ export default function Navbar() {
                                 </a>
                             );
                         })}
-                        <button className="w-full mt-4 flex items-center justify-center space-x-2 bg-brand-green text-white px-6 py-3 rounded-full font-semibold">
+                        <button className="w-full mt-4 flex items-center justify-center space-x-2 bg-brand-green hover:bg-[#0a2f1c] text-white px-6 py-3 rounded-full font-semibold transition-colors duration-300 border-2 border-brand-green">
                             <span>Order Now</span>
                             <ShoppingBag className="w-4 h-4" />
                         </button>

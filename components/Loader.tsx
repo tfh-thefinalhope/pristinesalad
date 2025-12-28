@@ -11,7 +11,7 @@ export default function Loader() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="relative w-32 h-32 md:w-40 md:h-40 bg-white rounded-full shadow-2xl flex items-center justify-center mb-8 p-6 ring-4 ring-brand-green/20"
+                className="relative w-44 h-44 md:w-52 md:h-52 bg-white rounded-full shadow-2xl flex items-center justify-center mb-8 p-4 ring-4 ring-brand-green/20 overflow-hidden"
             >
                 <div className="relative w-full h-full">
                     <Image
@@ -25,19 +25,24 @@ export default function Loader() {
             </motion.div>
 
             {/* Vertical Line Loading Animation */}
-            <div className="flex flex-col items-center gap-2">
-                <motion.div
-                    className="w-1 bg-brand-green rounded-full"
-                    animate={{
-                        height: ["20px", "60px", "20px"],
-                        opacity: [0.5, 1, 0.5]
-                    }}
-                    transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
+            <div className="flex items-center gap-1.5 mt-4">
+                {[...Array(5)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="w-1.5 bg-brand-green rounded-full"
+                        initial={{ height: "12px", opacity: 0.5 }}
+                        animate={{
+                            height: ["12px", "32px", "12px"],
+                            opacity: [0.5, 1, 0.5]
+                        }}
+                        transition={{
+                            duration: 0.8,
+                            repeat: Infinity,
+                            delay: i * 0.1,
+                            ease: "easeInOut"
+                        }}
+                    />
+                ))}
             </div>
         </div>
     );

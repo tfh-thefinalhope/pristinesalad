@@ -17,13 +17,9 @@ export function LoaderProvider({ children }: { children: ReactNode }) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Show loader on page change
+    // Show loader on page change (indefinite until handled by page)
     useEffect(() => {
         setIsLoading(true);
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500); // Keep loader for 1.5s on page transition for effect
-        return () => clearTimeout(timer);
     }, [pathname, searchParams]);
 
     const showLoader = (duration?: number) => {

@@ -106,7 +106,7 @@ export default function Hero() {
                             <a
                                 href="/contact"
                                 onClick={handleActionClick}
-                                className="inline-block bg-brand-green text-[#192901] px-12 py-4 rounded-lg font-bold text-sm tracking-wider uppercase hover:bg-brand-green/90 transition-all duration-300 shadow-lg shadow-green-900/20 transform hover:scale-105 w-full sm:w-auto"
+                                className="inline-block bg-brand-green text-[#192901] px-12 py-4 rounded-lg font-bold text-sm tracking-wider uppercase hover:bg-[#0a2f1c] hover:text-white transition-all duration-300 shadow-lg shadow-green-900/20 transform hover:scale-105 w-full sm:w-auto border-2 border-brand-green"
                             >
                                 Contact Now
                             </a>

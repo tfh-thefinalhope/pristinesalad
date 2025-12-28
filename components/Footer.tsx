@@ -53,7 +53,7 @@ export default function Footer() {
                         <p className="text-sm text-gray-300 font-light mb-4">Subscribe to get special offers and seasonal menu updates.</p>
                         <div className="flex flex-col gap-2">
                             <input type="email" placeholder="Enter your email" className="bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-yellow" />
-                            <button className="bg-brand-green text-white font-bold text-sm px-4 py-2 rounded hover:bg-white hover:text-brand-green transition-colors">SUBSCRIBE</button>
+                            <button className="bg-brand-green text-white font-bold text-sm px-4 py-2 rounded hover:bg-[#0a2f1c] hover:text-white transition-colors border-2 border-brand-green">SUBSCRIBE</button>
                         </div>
                     </div>
                 </div>

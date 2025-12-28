@@ -16,9 +16,12 @@ interface MenuCategory {
     items: MenuItem[];
 }
 
+import { useLoader } from "@/context/LoaderContext";
+
 export default function MenuPage() {
     const [menuData, setMenuData] = useState<MenuCategory[]>([]);
     const [loading, setLoading] = useState(true);
+    const { hideLoader } = useLoader();
 
     useEffect(() => {
         // Fetch specific full menu data
@@ -27,14 +30,16 @@ export default function MenuPage() {
             .then(data => {
                 setMenuData(data.fullMenu || []);
                 setLoading(false);
+                hideLoader();
             })
             .catch(err => {
                 console.error("Failed to load menu", err);
                 setLoading(false);
+                hideLoader();
             });
-    }, []);
+    }, [hideLoader]);
 
-    if (loading) return <div className="min-h-screen flex items-center justify-center bg-brand-light">Loading Menu...</div>;
+    if (loading) return <div className="min-h-screen bg-brand-light"></div>;
 
     return (
         <main className="min-h-screen bg-brand-light">
@@ -73,7 +78,7 @@ export default function MenuPage() {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: itemIdx * 0.05 }}
-                                        className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group ring-1 ring-gray-100 hover:ring-brand-green/30 flex flex-col h-full"
+                                        className="bg-white hover:bg-[#f2fce5] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group hover:scale-[1.02] ring-1 ring-gray-100 hover:ring-brand-green/30 flex flex-col h-full"
                                     >
                                         <div className="h-40 overflow-hidden relative flex-shrink-0">
                                             <img
@@ -92,7 +97,7 @@ export default function MenuPage() {
                                             <p className="text-gray-500 text-xs leading-relaxed flex-grow line-clamp-2">
                                                 {item.description}
                                             </p>
-                                            <button className="mt-3 w-full py-2 rounded-lg border border-brand-green text-brand-green text-sm font-semibold hover:bg-brand-green hover:text-white transition-all">
+                                            <button className="mt-3 w-full py-2 rounded-lg border border-brand-green text-brand-green text-sm font-semibold transition-all group-hover:bg-brand-green group-hover:text-white hover:bg-[#0a2f1c] hover:border-brand-green hover:text-white">
                                                 Add to Cart
                                             </button>
                                         </div>

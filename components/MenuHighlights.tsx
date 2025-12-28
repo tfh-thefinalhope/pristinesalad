@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLoader } from "@/context/LoaderContext";
 
 interface MenuItem {
@@ -34,17 +35,12 @@ const MENU_DATA: MenuCategory[] = [
                 description: "Fresh buttery avocado, kale, spinach, toasted seeds, and balsamic vinaigrette.",
                 price: "₹399",
                 image: "/menu/avocado.jpg"
-            }
-        ]
-    },
-    {
-        title: "Exotic Fruit Salads",
-        items: [
+            },
             {
-                name: "Tropical Paradise",
-                description: "Dragon fruit, kiwi, blueberries, and citrus dressing with chia seeds.",
-                price: "₹299",
-                image: "/menu/fruit.jpg"
+                name: "The Greek Goddess",
+                description: "Cucumber, olives, feta cheese, and cherry tomatoes with a classic oregano olive oil dressing.",
+                price: "₹329",
+                image: "/menu/greek.jpg"
             }
         ]
     }
@@ -86,7 +82,7 @@ export default function MenuHighlights() {
                                     key={currentImage}
                                     initial={{ opacity: 0, scale: 1.1 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0 }}
+                                    exit={{ opacity: 0, x: 100 }} // Slight exit animation
                                     transition={{ duration: 0.4 }}
                                     className="absolute inset-0"
                                 >
@@ -94,7 +90,8 @@ export default function MenuHighlights() {
                                         src={currentImage}
                                         alt="Menu Highlights"
                                         fill
-                                        className="object-cover object-[center_30%]"
+                                        className="object-cover object-[center_40%]"
+                                        priority
                                     />
                                 </motion.div>
                             </AnimatePresence>
@@ -114,11 +111,11 @@ export default function MenuHighlights() {
                                     setCurrentImage(item.image);
                                     setActiveIdx(idx);
                                 }}
-                                className={`group p-6 rounded-2xl transition-all duration-300 border border-transparent cursor-pointer ${idx === activeIdx ? "bg-brand-green/5 border-brand-green/20 shadow-lg scale-105" : "hover:bg-gray-50 hover:border-gray-200"
+                                className={`group p-6 rounded-2xl transition-all duration-300 border border-transparent cursor-pointer ${idx === activeIdx ? "bg-brand-green/5 border-brand-green/20 shadow-lg scale-102" : "hover:bg-gray-50 hover:border-gray-200"
                                     }`}
                             >
                                 <div className="flex justify-between items-start">
-                                    <div>
+                                    <div className="w-full">
                                         <h3 className={`text-xl font-bold mb-2 transition-colors ${idx === activeIdx ? "text-brand-green" : "text-gray-900"
                                             }`}>
                                             {item.name}
@@ -126,14 +123,14 @@ export default function MenuHighlights() {
                                         <p className="text-gray-600 text-sm leading-relaxed mb-4">
                                             {item.description}
                                         </p>
-                                        <div className="flex items-center gap-4">
+                                        <div className="flex items-center justify-between">
                                             <span className="text-lg font-bold text-gray-900">{item.price}</span>
                                             <button
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     handleAddToCart();
                                                 }}
-                                                className="text-sm font-semibold text-brand-green flex items-center gap-1 hover:gap-2 transition-all"
+                                                className="text-sm font-semibold text-brand-green flex items-center gap-1 hover:gap-2 transition-all hover:text-[#0a2f1c]"
                                             >
                                                 Add to Cart <ChevronRight size={16} />
                                             </button>
@@ -143,6 +140,16 @@ export default function MenuHighlights() {
                             </motion.div>
                         ))}
                     </div>
+                </div>
+
+                {/* View Full Menu Button - Centered on Page */}
+                <div className="pt-12 flex justify-center w-full">
+                    <Link
+                        href="/our-menu"
+                        className="flex items-center justify-center w-full max-w-2xl py-4 bg-brand-green text-white rounded-full font-bold text-lg hover:bg-[#0a2f1c] transition-all duration-300 shadow-xl hover:shadow-brand-green/30 uppercase tracking-widest transform hover:scale-[1.02] border-2 border-brand-green"
+                    >
+                        View Full Menu
+                    </Link>
                 </div>
             </div>
         </section>
