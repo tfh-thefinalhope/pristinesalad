@@ -22,6 +22,8 @@ export const metadata: Metadata = {
 import { LoaderProvider } from "@/context/LoaderContext";
 import Footer from "@/components/Footer";
 
+import { Suspense } from "react";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,10 +34,12 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${poppins.variable} antialiased`}
       >
-        <LoaderProvider>
-          {children}
-          <Footer />
-        </LoaderProvider>
+        <Suspense fallback={null}>
+          <LoaderProvider>
+            {children}
+            <Footer />
+          </LoaderProvider>
+        </Suspense>
       </body>
     </html>
   );

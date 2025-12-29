@@ -15,7 +15,7 @@ export default function Home() {
     <main className="min-h-screen bg-brand-light font-sans">
       <Navbar />
       <Hero />
-      <MenuHighlights data={content.menu} />
+      <MenuHighlights />
       <AboutSection data={content.story} />
       <TestimonialsSection data={content.testimonials} />
       <MapSection />
