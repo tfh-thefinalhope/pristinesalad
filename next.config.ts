@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // ✅ REQUIRED for frontend-only hosting
+  distDir: "dist", // Output build artifacts to 'dist' folder
 
   images: {
     unoptimized: true, // ✅ REQUIRED for static export
