@@ -36,11 +36,11 @@ export default function AboutSection({ data }: AboutSectionProps) {
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-4 mt-8">
                                 <img src="/images/about-1.png" alt="Fresh Ingredients" className="rounded-2xl shadow-lg w-full h-48 object-cover" />
-                                <img src="/images/about-4.png" alt="Healthy Lifestyle" className="rounded-2xl shadow-lg w-full h-64 object-cover" />
+                                <img src="/images/about-3.png" alt="Healthy Lifestyle" className="rounded-2xl shadow-lg w-full h-64 object-cover" />
                             </div>
                             <div className="space-y-4">
                                 <img src="/images/about-2.png" alt="Bowl of Salad" className="rounded-2xl shadow-lg w-full h-64 object-cover" />
-                                <img src="/images/about-3.png" alt="Chef Making Salad" className="rounded-2xl shadow-lg w-full h-48 object-cover" />
+                                <img src="/images/about-4.png" alt="Chef Making Salad" className="rounded-2xl shadow-lg w-full h-48 object-cover" />
                             </div>
                         </div>
                     </motion.div>

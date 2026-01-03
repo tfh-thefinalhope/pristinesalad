@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { MapPin } from "lucide-react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default function MapSection() {
@@ -28,20 +27,19 @@ export default function MapSection() {
                             </h2>
 
                             <p className="text-gray-500">
-                                Daily salad drops to homes and offices. Select your city to see our current delivery pockets.
+                                Daily salad drops to homes and offices in our exclusive delivery zone.
                             </p>
 
                             <div className="flex space-x-2">
-                                <button className="px-6 py-2 rounded-full bg-brand-green text-white font-medium shadow-lg hover:bg-brand-darkGreen transition-all">Mumbai</button>
-                                <button className="px-6 py-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all">Pune</button>
+                                <button className="px-6 py-2 rounded-full bg-brand-green text-white font-medium shadow-lg transition-all cursor-default">Delhi NCR</button>
                             </div>
 
                             <div className="space-y-2">
-                                <h3 className="font-bold text-brand-dark">Mumbai</h3>
+                                <h3 className="font-bold text-brand-dark">Delhi NCR</h3>
                                 <div className="flex flex-wrap gap-2">
-                                    <span className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium">Bhandup</span>
-                                    <span className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium">Mahim</span>
-                                    <span className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium">Powai</span>
+                                    <span className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium">Delhi</span>
+                                    <span className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium">Noida</span>
+                                    <span className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium">Gurgaon</span>
                                 </div>
                             </div>
 
@@ -55,7 +53,7 @@ export default function MapSection() {
                                     <div className="text-xs text-gray-400">Rating</div>
                                 </div>
                                 <div>
-                                    <div className="text-xl font-bold text-brand-dark">2</div>
+                                    <div className="text-xl font-bold text-brand-dark">3</div>
                                     <div className="text-xs text-gray-400">Active Cities</div>
                                 </div>
                             </div>
@@ -66,17 +64,28 @@ export default function MapSection() {
                             {isClient ? (
                                 <MapContainer
                                     // @ts-ignore
-                                    center={[19.1136, 72.8697]}
-                                    zoom={12}
+                                    center={[28.6139, 77.2090]}
+                                    zoom={11}
+                                    scrollWheelZoom={false}
+                                    doubleClickZoom={false}
+                                    touchZoom={false}
+                                    dragging={false}
+                                    zoomControl={false}
                                     className="h-full w-full z-0"
                                 >
                                     <TileLayer
                                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     />
-                                    <Marker position={[19.1136, 72.8697]}>
+                                    {/* @ts-ignore */}
+                                    <Circle
+                                        center={[28.6139, 77.2090]}
+                                        radius={25000}
+                                        pathOptions={{ color: '#059669', fillColor: '#059669', fillOpacity: 0.2 }}
+                                    />
+                                    <Marker position={[28.6139, 77.2090]}>
                                         <Popup>
-                                            Pristine Salads <br /> Main Kitchen (Andheri)
+                                            Pristine Salads <br /> Delhi NCR Kitchen
                                         </Popup>
                                     </Marker>
                                 </MapContainer>
@@ -86,14 +95,13 @@ export default function MapSection() {
                                 </div>
                             )}
 
-                            {/* Map overlay card (optional, like in image 2 "Bhandup West") */}
+                            {/* Map overlay card */}
                             <div className="absolute top-4 left-4 bg-white p-4 rounded-xl shadow-2xl z-[1000] max-w-xs">
                                 <h4 className="font-bold text-gray-900 flex items-center">
                                     <MapPin className="w-4 h-4 text-brand-green mr-2" />
-                                    Bhandup West
+                                    Delhi NCR
                                 </h4>
-                                <p className="text-xs text-gray-500 pl-6">Mumbai, Maharashtra</p>
-                                <a href="#" className="text-xs text-blue-500 pl-6 hover:underline">View larger map</a>
+                                <p className="text-xs text-gray-500 pl-6">India</p>
                             </div>
                         </div>
 

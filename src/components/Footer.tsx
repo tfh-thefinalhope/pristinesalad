@@ -35,7 +35,7 @@ export default function Footer() {
                         <h3 className="text-sm font-bold tracking-wider mb-6 uppercase">Our Company</h3>
                         <div className="space-y-4 text-sm text-gray-300 font-light leading-relaxed">
                             <p>
-                                <span className="font-semibold text-white">Address:</span> 123 Green Street, Salad City, India 400001
+                                <span className="font-semibold text-white">Address:</span> Eklavya Marg, Samrat Enclave, Block L, Raj Nagar, Pitampura, Delhi, 110034
                             </p>
                             <p>
                                 <span className="font-semibold text-white">Phone:</span> +91 84483 08305<br />
@@ -72,7 +72,7 @@ export default function Footer() {
 
                     {/* Social Icons */}
                     <div className="flex space-x-4">
-                        <a href="#" className="bg-white text-brand-dark p-2 rounded-full hover:bg-brand-yellow transition-colors">
+                        <a href="https://www.instagram.com/pristine.salad/?igsh=MXVqNXd0ZnI4MWttMw%3D%3D#" className="bg-white text-brand-dark p-2 rounded-full hover:bg-brand-yellow transition-colors">
                             <Instagram size={18} />
                         </a>
                         <a href="#" className="bg-white text-brand-dark p-2 rounded-full hover:bg-brand-yellow transition-colors">

@@ -103,6 +103,54 @@ export default function OurStory() {
                     ))}
                 </div>
             </section>
+
+            {/* Team Section */}
+            <section className="py-20 bg-brand-light">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-16"
+                    >
+                        <h2 className="text-4xl font-bold text-brand-dark mb-4">Meet Our Team</h2>
+                        <div className="h-1 w-20 bg-brand-green rounded-full mx-auto mb-6"></div>
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+                            The passionate individuals working tirelessly to brings the freshest salads to your table.
+                        </p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            { name: "Arjun Mehta", role: "Head Chef", image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=2668" },
+                            { name: "Priya Sharma", role: "Nutritionist", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2670" },
+                            { name: "Rohan Verma", role: "Sourcing Manager", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2670" },
+                            { name: "Ananya Gupta", role: "Customer Experience", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576" }
+                        ].map((member, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
+                            >
+                                <div className="h-64 overflow-hidden">
+                                    <img
+                                        src={member.image}
+                                        alt={member.name}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                </div>
+                                <div className="p-6">
+                                    <h3 className="text-xl font-bold text-brand-dark mb-1">{member.name}</h3>
+                                    <p className="text-brand-green font-medium text-sm uppercase tracking-wider">{member.role}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </main>
     );
 }

@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLoader } from "@/context/LoaderContext";
+import { image } from "framer-motion/client";
 
 export default function Hero() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,10 +10,10 @@ export default function Hero() {
 
     const slides = [
         {
-            topTag: "100% Vegetarian Cloud Kitchen",
+            topTag: "Fresh Greens & Premium Proteins",
             title: <>FRESH. <span className="text-brand-green">CRUNCHY.</span> <br /> HEALTHY.</>,
             subtitle: <>Nourishing your body with <br className="hidden lg:block" /> nature's finest ingredients.</>,
-            image: "https://saladocafe.com/wp-content/uploads/2025/08/pannerr.webp"
+            image: "/hero-slide-1.png"
         },
         {
             topTag: "Protein Packed Bowls",
@@ -100,11 +101,11 @@ export default function Hero() {
                             <div className="h-6 lg:h-8" />
 
                             <Link
-                                to="/contact"
+                                to="/our-menu"
                                 onClick={handleActionClick}
                                 className="inline-block bg-brand-green text-[#192901] px-12 py-4 rounded-lg font-bold text-sm tracking-wider uppercase hover:bg-[#0a2f1c] hover:text-white transition-all duration-300 shadow-lg shadow-green-900/20 transform hover:scale-105 w-full sm:w-auto border-2 border-brand-green"
                             >
-                                Contact Now
+                                Explore Now
                             </Link>
                         </motion.div>
                     </AnimatePresence>

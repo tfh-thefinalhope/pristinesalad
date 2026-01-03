@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { LoaderProvider } from '@/context/LoaderContext'
+import { CartProvider } from '@/context/CartContext'
+import CartSidebar from '@/components/CartSidebar'
 import Footer from '@/components/Footer'
 import Home from '@/pages/Home'
 import Contact from '@/pages/Contact'
@@ -23,6 +25,7 @@ function Layout() {
     return (
         <div className="font-sans antialiased text-gray-900">
             <ScrollToTop />
+            <CartSidebar />
             {/* Navbar is in Home page in Next.js version, but usually better in Layout. 
           However, Home page specifically had it. I'll put it here for now. */}
             {/* <Navbar /> */}
@@ -48,7 +51,9 @@ export default function App() {
     return (
         <BrowserRouter>
             <LoaderProvider>
-                <Layout />
+                <CartProvider>
+                    <Layout />
+                </CartProvider>
             </LoaderProvider>
         </BrowserRouter>
     )

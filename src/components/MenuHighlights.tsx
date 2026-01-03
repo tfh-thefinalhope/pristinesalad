@@ -3,6 +3,12 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLoader } from "@/context/LoaderContext";
+import { useCart } from "@/context/CartContext";
+
+import contentData from "@/data/content.json";
+
+// Ensure type safety for imports
+const chefHighlights = (contentData as any).chefHighlights || [];
 
 interface MenuItem {
     name: string;
@@ -19,27 +25,8 @@ interface MenuCategory {
 
 const MENU_DATA: MenuCategory[] = [
     {
-        title: "Signature Bowls",
-        items: [
-            {
-                name: "Protein Packed Paneer",
-                description: "Grilled paneer cubes, quinoa, mixed exotic greens, cherry tomatoes with lemon-herb dressing.",
-                price: "₹349",
-                image: "https://saladocafe.com/wp-content/uploads/2025/08/pannerr.webp"
-            },
-            {
-                name: "Avocado Supergreen",
-                description: "Fresh buttery avocado, kale, spinach, toasted seeds, and balsamic vinaigrette.",
-                price: "₹399",
-                image: "/menu/avocado.jpg"
-            },
-            {
-                name: "The Greek Goddess",
-                description: "Cucumber, olives, feta cheese, and cherry tomatoes with a classic oregano olive oil dressing.",
-                price: "₹329",
-                image: "/menu/greek.jpg"
-            }
-        ]
+        title: "Chef Highlights",
+        items: chefHighlights
     }
 ];
 
@@ -47,10 +34,16 @@ export default function MenuHighlights() {
     const [currentImage, setCurrentImage] = useState(MENU_DATA[0].items[0].image);
     const [activeIdx, setActiveIdx] = useState(0);
     const { showLoader } = useLoader();
+    const { addToCart } = useCart();
 
-    const handleAddToCart = () => {
-        showLoader(2000);
-        // Add cart logic here later
+    const handleAddToCart = (item: MenuItem) => {
+        showLoader(500); // reduced loader time for better UX
+        addToCart({
+            id: item.name, // using name as id for now
+            name: item.name,
+            price: item.price,
+            image: item.image,
+        });
     };
 
     return (
@@ -66,35 +59,52 @@ export default function MenuHighlights() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Image Showcase */}
-                    <div className="flex flex-col">
+                    {/* Image Showcase - Hidden on Mobile */}
+                    <div className="hidden lg:flex flex-col">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl bg-gray-100"
+                            className="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl bg-gray-50 flex items-center justify-center border border-gray-100"
                         >
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={currentImage}
-                                    initial={{ opacity: 0, scale: 1.1 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, x: 100 }} // Slight exit animation
+                                    initial={{ opacity: 0, scale: 1.2 }}
+                                    animate={{ opacity: 1, scale: 1.1 }}
+                                    exit={{ opacity: 0, x: 100 }}
                                     transition={{ duration: 0.4 }}
-                                    className="absolute inset-0"
+                                    className="absolute inset-0 p-4"
                                 >
                                     <img
                                         src={currentImage}
                                         alt="Menu Highlights"
-                                        className="object-cover object-[center_40%] w-full h-full"
+                                        className="object-contain w-full h-full drop-shadow-xl"
                                     />
                                 </motion.div>
                             </AnimatePresence>
+
+                            {/* Price Tag Overlay */}
+                            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full font-bold text-brand-dark shadow-lg border border-brand-green/20 z-10">
+                                {MENU_DATA[0].items[activeIdx].price}
+                            </div>
+                        </motion.div>
+
+                        {/* Product Name Under Image */}
+                        <motion.div
+                            key={activeIdx}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-6 text-center"
+                        >
+                            <h3 className="text-2xl font-bold text-brand-green">
+                                {MENU_DATA[0].items[activeIdx].name}
+                            </h3>
                         </motion.div>
                     </div>
 
                     {/* Menu List */}
-                    <div className="space-y-6">
+                    <div className="space-y-4 lg:space-y-6">
                         {MENU_DATA[0].items.map((item, idx) => (
                             <motion.div
                                 key={idx}
@@ -106,10 +116,28 @@ export default function MenuHighlights() {
                                     setCurrentImage(item.image);
                                     setActiveIdx(idx);
                                 }}
-                                className={`group p-6 rounded-2xl transition-all duration-300 border border-transparent cursor-pointer ${idx === activeIdx ? "bg-brand-green/5 border-brand-green/20 shadow-lg scale-102" : "hover:bg-gray-50 hover:border-gray-200"
+                                onClick={() => {
+                                    setCurrentImage(item.image);
+                                    setActiveIdx(idx);
+                                }}
+                                className={`group p-4 lg:p-6 rounded-2xl transition-all duration-300 border border-transparent cursor-pointer ${idx === activeIdx ? "bg-brand-green/5 border-brand-green/20 shadow-lg scale-[1.02]" : "hover:bg-gray-50 hover:border-gray-200"
                                     }`}
                             >
-                                <div className="flex justify-between items-start">
+                                <div className="flex flex-col gap-4">
+                                    {/* Mobile Only Inline Image */}
+                                    {idx === activeIdx && (
+                                        <div className="lg:hidden w-full h-48 bg-white rounded-xl overflow-hidden shadow-sm relative mb-2">
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="w-full h-full object-contain p-2"
+                                            />
+                                            <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full font-bold text-brand-dark text-xs shadow-md border border-brand-green/20">
+                                                {item.price}
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div className="w-full">
                                         <h3 className={`text-xl font-bold mb-2 transition-colors ${idx === activeIdx ? "text-brand-green" : "text-gray-900"
                                             }`}>
@@ -123,7 +151,7 @@ export default function MenuHighlights() {
                                             <button
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleAddToCart();
+                                                    handleAddToCart(item);
                                                 }}
                                                 className="text-sm font-semibold text-brand-green flex items-center gap-1 hover:gap-2 transition-all hover:text-[#0a2f1c]"
                                             >

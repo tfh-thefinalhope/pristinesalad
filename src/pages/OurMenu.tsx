@@ -17,19 +17,17 @@ interface MenuCategory {
 }
 
 import { useLoader } from "@/context/LoaderContext";
+import { useCart } from "@/context/CartContext";
 import content from "@/data/content.json";
 
 export default function MenuPage() {
     const [menuData, setMenuData] = useState<MenuCategory[]>([]);
     const [loading, setLoading] = useState(true);
-    const { hideLoader } = useLoader();
+    const { hideLoader, showLoader } = useLoader();
+    const { addToCart } = useCart();
 
     useEffect(() => {
-        // Fetch specific full menu data - MOCKED FOR VITE MIGRATION
-        // In Vite, we can import JSON directly. 
-        // fetch('/api/content') -> content.fullMenu
-
-        // Simulating async to keep structure similar if we want to revert later
+        // Simulating async load for better UX with loader
         const timer = setTimeout(() => {
             setMenuData(content.fullMenu || []);
             setLoading(false);
@@ -84,7 +82,7 @@ export default function MenuPage() {
                                             <img
                                                 src={item.image}
                                                 alt={item.name}
-                                                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                                className="w-full h-full object-contain p-1 transform group-hover:scale-110 transition-transform duration-500"
                                             />
                                             <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full font-bold text-brand-dark text-sm shadow-sm">
                                                 ₹{item.price}
@@ -97,7 +95,19 @@ export default function MenuPage() {
                                             <p className="text-gray-500 text-xs leading-relaxed flex-grow line-clamp-2">
                                                 {item.description}
                                             </p>
-                                            <button className="mt-3 w-full py-2 rounded-lg border border-brand-green text-brand-green text-sm font-semibold transition-all group-hover:bg-brand-green group-hover:text-white hover:bg-[#0a2f1c] hover:border-brand-green hover:text-white">
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    showLoader(300);
+                                                    addToCart({
+                                                        id: item.name,
+                                                        name: item.name,
+                                                        price: `₹${item.price}`, // Adding symbol as it seems missing in data or inconsistent
+                                                        image: item.image,
+                                                    });
+                                                }}
+                                                className="mt-3 w-full py-2 rounded-lg border border-brand-green text-brand-green text-sm font-semibold transition-all group-hover:bg-brand-green group-hover:text-white hover:bg-[#0a2f1c] hover:border-brand-green hover:text-white"
+                                            >
                                                 Add to Cart
                                             </button>
                                         </div>

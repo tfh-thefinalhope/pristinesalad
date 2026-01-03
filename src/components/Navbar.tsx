@@ -1,14 +1,17 @@
-import { motion } from "framer-motion";
-import { Menu, ShoppingBag, Leaf } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ShoppingBag, Leaf, Circle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useLoader } from "@/context/LoaderContext";
+import { useCart } from "@/context/CartContext";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
     const pathname = location.pathname;
     const { hideLoader } = useLoader();
+    const { toggleCart, cart } = useCart();
 
     // Clear loader on navigation to static pages (Our Menu handles its own loading)
     useEffect(() => {
@@ -26,7 +29,7 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-brand-green/10 shadow-sm"
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="w-full px-6 lg:px-10">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center space-x-3 group">
@@ -68,10 +71,37 @@ export default function Navbar() {
 
                     {/* CTA & Mobile Toggle */}
                     <div className="flex items-center space-x-4">
-                        <button className="hidden md:flex items-center space-x-2 bg-brand-green hover:bg-[#0a2f1c] text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-brand-green/30 transform hover:scale-105 border-2 border-brand-green">
+                        <button
+                            onClick={toggleCart}
+                            className="hidden md:flex items-center space-x-2 bg-brand-green hover:bg-[#0a2f1c] text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-brand-green/30 transform hover:scale-105 border-2 border-brand-green relative"
+                        >
                             <span>Order Now</span>
-                            <ShoppingBag className="w-4 h-4" />
+                            <div className="relative">
+                                <ShoppingBag className="w-4 h-4" />
+                                {cart.length > 0 && (
+                                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+                                        {cart.length}
+                                    </span>
+                                )}
+                            </div>
                         </button>
+
+                        {/* Mobile Order Button (Icon Only) */}
+                        <button
+                            onClick={toggleCart}
+                            className="md:hidden p-2 text-brand-dark hover:text-brand-green transition-colors relative"
+                        >
+                            <div className="relative">
+                                <ShoppingBag className="w-6 h-6" />
+                                {cart.length > 0 && (
+                                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+                                        {cart.length}
+                                    </span>
+                                )}
+                            </div>
+                        </button>
+
+                        {/* Mobile Menu Button */}
 
                         <button
                             className="md:hidden p-2 text-brand-dark"

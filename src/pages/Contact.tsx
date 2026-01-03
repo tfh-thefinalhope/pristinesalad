@@ -37,7 +37,7 @@ export default function ContactPage() {
                             </div>
                             <div>
                                 <h3 className="font-bold text-xl text-brand-dark">Visit Us</h3>
-                                <p className="text-gray-600">123 Green Street, Salad City, India 400001</p>
+                                <p className="text-gray-600">Eklavya Marg, Samrat Enclave, Block L, Raj Nagar, Pitampura, Delhi, 110034</p>
                             </div>
                         </div>
 
@@ -79,27 +79,44 @@ export default function ContactPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 }}
                     className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        const formData = new FormData(e.currentTarget);
+                        const name = formData.get("name") as string;
+                        const phone = formData.get("phone") as string;
+                        const email = formData.get("email") as string;
+                        const message = formData.get("message") as string;
+
+                        if (!name || !phone || !email || !message) {
+                            alert("Please fill in all fields.");
+                            return;
+                        }
+
+                        const whatsappMessage = `*New Contact Request*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Message:* ${message}`;
+                        const encodedMessage = encodeURIComponent(whatsappMessage);
+                        window.open(`https://wa.me/918448308305?text=${encodedMessage}`, '_blank');
+                    }}
                 >
                     <div className="space-y-6">
                         <div className="grid grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-bold text-gray-700 mb-2">Name</label>
-                                <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="Your Name" />
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Name *</label>
+                                <input name="name" type="text" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="Your Name" />
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-gray-700 mb-2">Phone</label>
-                                <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="Your Phone" />
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Phone *</label>
+                                <input name="phone" type="tel" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="Your Phone" />
                             </div>
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
-                            <input type="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="your@email.com" />
+                            <label className="block text-sm font-bold text-gray-700 mb-2">Email *</label>
+                            <input name="email" type="email" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="your@email.com" />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">Message</label>
-                            <textarea rows={4} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="How can we help you?"></textarea>
+                            <label className="block text-sm font-bold text-gray-700 mb-2">Message *</label>
+                            <textarea name="message" required rows={4} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="How can we help you?"></textarea>
                         </div>
-                        <button className="w-full bg-brand-green text-white font-bold py-4 rounded-xl hover:bg-brand-darkGreen transition-colors shadow-lg shadow-brand-green/30">
+                        <button type="submit" className="w-full bg-brand-green text-white font-bold py-4 rounded-xl hover:bg-brand-darkGreen transition-colors shadow-lg shadow-brand-green/30">
                             Send Message
                         </button>
                     </div>
